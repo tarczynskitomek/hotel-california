@@ -2,9 +2,10 @@ package it.tarczynski.hotel.california.core.model.aggregate
 
 import it.tarczynski.hotel.california.core.event.EventPublisher
 
-interface AggregateRoot {
+interface Aggregate {
 
     val id: AggregateId
 
-    fun publishWith(eventPublisher: EventPublisher): AggregateRoot
+    // czy to nie powinno być tylko dla aggregate rootów?
+    fun publishWith(eventPublisher: EventPublisher): Aggregate
 }

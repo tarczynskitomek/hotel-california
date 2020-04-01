@@ -10,4 +10,15 @@ abstract class DomainEvent(val id: AggregateId,
     override fun toString(): String {
         return """DomainEvent: [id: $id, type: $eventType]"""
     }
+
+    override fun equals(other: Any?): Boolean {
+        return other is DomainEvent
+                && other.eventType == eventType
+                && other.id == id
+                && other.happened == happened
+    }
+
+    override fun hashCode(): Int {
+        return (id.hashCode() + eventType.hashCode() + happened.hashCode()) * 31
+    }
 }
