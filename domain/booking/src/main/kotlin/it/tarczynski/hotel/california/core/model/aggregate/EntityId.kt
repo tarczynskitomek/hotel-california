@@ -1,9 +1,9 @@
 package it.tarczynski.hotel.california.core.model.aggregate
 
-abstract class AggregateId(val id: String) {
+abstract class EntityId(val id: String) {
 
     override fun equals(other: Any?): Boolean {
-        return other is AggregateId && other.id == id
+        return other is EntityId && other.id == id
     }
 
     override fun hashCode(): Int {

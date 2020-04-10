@@ -1,9 +1,9 @@
 package it.tarczynski.hotel.california.core.event
 
-import it.tarczynski.hotel.california.core.model.aggregate.AggregateId
+import it.tarczynski.hotel.california.core.model.aggregate.EntityId
 import java.time.Instant
 
-abstract class DomainEvent(val id: AggregateId,
+abstract class DomainEvent(val id: EntityId,
                            val eventType: String,
                            val happened: Instant = Instant.now()) {
 

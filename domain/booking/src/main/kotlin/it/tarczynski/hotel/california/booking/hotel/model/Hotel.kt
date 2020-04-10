@@ -5,7 +5,7 @@ import it.tarczynski.hotel.california.core.event.DomainEvent
 import it.tarczynski.hotel.california.core.event.EventPublisher
 import it.tarczynski.hotel.california.core.exception.RoomNotFoundException
 import it.tarczynski.hotel.california.core.model.aggregate.Aggregate
-import it.tarczynski.hotel.california.core.model.aggregate.AggregateId
+import it.tarczynski.hotel.california.core.model.aggregate.EntityId
 import it.tarczynski.hotel.california.booking.guest.model.GuestId
 import it.tarczynski.hotel.california.booking.hotel.event.HotelLocationDescribed
 import it.tarczynski.hotel.california.booking.hotel.event.HotelRoomsConfigured
@@ -13,15 +13,14 @@ import it.tarczynski.hotel.california.booking.room.event.HotelRoomBooked
 import it.tarczynski.hotel.california.booking.room.model.HotelRoom
 import it.tarczynski.hotel.california.booking.room.model.RoomNumber
 
-class HotelId(id: String) : AggregateId(id)
+class HotelId(id: String) : EntityId(id)
 
 @ValueObject
 class HotelLocation
 
-class Hotel private constructor(override val id: HotelId,
-                                val location: HotelLocation = HotelLocation(),
-                                val hotelRooms: Set<HotelRoom> = emptySet(),
-                                private val events: List<DomainEvent> = emptyList()) : Aggregate {
+internal class Hotel private constructor(override val id: HotelId,
+                                         val hotelRooms: Set<HotelRoom> = emptySet(),
+                                         private val events: List<DomainEvent> = emptyList()) : Aggregate {
 
     override fun publishWith(eventPublisher: EventPublisher): Hotel {
         eventPublisher.publish(events)
@@ -37,23 +36,9 @@ class Hotel private constructor(override val id: HotelId,
         return apply(hotelRoomBooked).withEvent(hotelRoomBooked)
     }
 
-    fun configureRooms(hotelRooms: Set<HotelRoom>): Hotel {
-        val roomsConfigured = HotelRoomsConfigured(id, hotelRooms)
-        return apply(roomsConfigured).withEvent(roomsConfigured)
-    }
-
-    fun describeLocation(location: HotelLocation): Hotel {
-        val locationDescribed = HotelLocationDescribed(id, location)
-        return apply(locationDescribed).withEvent(locationDescribed)
-    }
-
-    fun configure(hotelConfiguration: HotelConfiguration): Hotel {
-        return hotelConfiguration.applyConfigurationTo(this)
-    }
-
     private fun apply(event: DomainEvent): Hotel {
         return when (event) {
-            is HotelRoomsConfigured -> roomsConfigured(event.hotelRooms)
+            is HotelRoomsConfigured -> roomsConfigured(event.roomIds)
             is HotelLocationDescribed -> locationConfigured(event.location)
             is HotelRoomBooked -> roomBooked(event)
             else -> this
@@ -76,7 +61,7 @@ class Hotel private constructor(override val id: HotelId,
                           location: HotelLocation = this.location,
                           hotelRooms: Set<HotelRoom> = this.hotelRooms,
                           events: List<DomainEvent> = this.events): Hotel {
-        return Hotel(id, location, hotelRooms, events)
+        return Hotel(id, hotelRooms, events)
     }
 
     companion object {

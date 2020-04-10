@@ -4,7 +4,7 @@ import it.tarczynski.hotel.california.core.event.EventPublisher
 
 interface Aggregate {
 
-    val id: AggregateId
+    val id: EntityId
 
     // czy to nie powinno być tylko dla aggregate rootów?
     fun publishWith(eventPublisher: EventPublisher): Aggregate
