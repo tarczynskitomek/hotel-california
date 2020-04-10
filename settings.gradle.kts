@@ -1,2 +1,2 @@
 rootProject.name = "hotel.california"
-include("domain", "repository", "service", "application", "infrastructure")
+include("domain:booking", "repository", "service", "application", "infrastructure")

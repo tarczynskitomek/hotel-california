@@ -12,7 +12,7 @@ val groovyVersion: String by project
 val spockBomVersion: String by project
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(project(":domain:booking"))
     implementation(project(":repository"))
     implementation(project(":service"))
     implementation(project(":application"))
