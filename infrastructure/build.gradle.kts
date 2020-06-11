@@ -8,7 +8,7 @@ apply(plugin = "io.spring.dependency-management")
 apply(plugin = "groovy")
 
 val groovyVersion: String by project
-val spockBomVersion: String by project
+val spockVersion: String by project
 
 dependencies {
     implementation(project(":domain:booking"))
@@ -23,12 +23,10 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-stream")
     implementation("org.codehaus.groovy:groovy-all:$groovyVersion")
 
-    testImplementation(platform("org.spockframework:spock-bom:$spockBomVersion"))
-    testImplementation("org.spockframework:spock-core")
-    testImplementation("org.spockframework:spock-junit4")
-    testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-    }
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-test")
+    testImplementation("org.spockframework:spock-spring:${spockVersion}")
+    testImplementation("org.spockframework:spock-core:${spockVersion}")
 
 }
 
