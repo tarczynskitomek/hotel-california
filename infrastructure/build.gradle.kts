@@ -2,13 +2,16 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
+    kotlin("kapt")
 }
 
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "groovy")
+apply(plugin = "kotlin-kapt")
 
 val groovyVersion: String by project
 val spockVersion: String by project
+val mongoDbTestcontainersVersion: String by project
 
 dependencies {
     implementation(project(":domain:booking"))
@@ -27,7 +30,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-test")
     testImplementation("org.spockframework:spock-spring:${spockVersion}")
     testImplementation("org.spockframework:spock-core:${spockVersion}")
-
+    testImplementation("org.testcontainers:mongodb:${mongoDbTestcontainersVersion}")
 }
 
 dependencyManagement {

@@ -1,12 +1,12 @@
 plugins {
-    id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
 }
 
 apply(plugin = "io.spring.dependency-management")
 
+val springBootVersion: String by project
+
 dependencies {
-    project(":domain")
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation(project(":domain:booking"))
 }
