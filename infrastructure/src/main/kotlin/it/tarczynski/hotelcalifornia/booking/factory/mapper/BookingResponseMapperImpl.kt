@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class BookingResponseMapperImpl : BookingResponseMapper {
 
     override fun toDto(booking: Booking): BookingResponse {
-        return BookingResponse(bookingId = booking.id.toString())
+        return BookingResponse(bookingId = booking.id)
     }
 
 }

@@ -14,8 +14,8 @@ class BookingFacadeImpl(private val bookingRepository: BookingRepository,
 
     override fun place(bookingRequest: BookingRequest): BookingResponse {
         val booking = bookingFactory.createBookingFrom(bookingRequest)
-        bookingRepository.save(booking)
-        return bookingResponseMapper.toDto(booking)
+        val savedBooking = bookingRepository.save(booking)
+        return bookingResponseMapper.toDto(savedBooking)
     }
 
 }

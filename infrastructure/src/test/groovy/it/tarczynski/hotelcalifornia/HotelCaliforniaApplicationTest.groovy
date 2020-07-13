@@ -6,6 +6,6 @@ class HotelCaliforniaApplicationTest extends BaseIntegrationSpec {
 
     def "context loads"() {
         expect:
-        mockMvc != null
+        objectMapper != null
     }
 }

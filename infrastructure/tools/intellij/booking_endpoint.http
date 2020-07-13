@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/v1/bookings/place
+Content-Type: application/json
+
+{
+  "adults": "1",
+  "children": "0",
+  "dateFrom": "",
+  "dateTo": "",
+  "roomId": "404"
+}
