@@ -12,7 +12,7 @@ import java.time.Month
         prefix = "with",
         builderStrategy = SimpleStrategy,
         excludes = ["DATE_FROM", "DATE_TO", "ROOM_ID"])
-class BookingRequestFixture {
+class BookingRequestBuilder {
 
     int adults = 1
     int children = 0
@@ -20,8 +20,8 @@ class BookingRequestFixture {
     LocalDate dateTo = LocalDate.of(2020, Month.JANUARY, 5)
     String roomId = '404'
 
-    static BookingRequestFixture builder() {
-        new BookingRequestFixture()
+    static BookingRequestBuilder builder() {
+        new BookingRequestBuilder()
     }
 
     BookingRequest build() {

@@ -17,7 +17,7 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
 
     def "posting valid booking request should result in creation of a new booking"() {
         given:
-        def bookingRequest = new BookingRequestFixture().build()
+        def bookingRequest = new BookingRequestBuilder().build()
 
         and:
         def validRequest = RequestEntity.post(new URI("$HOST_WITH_PORT/api/v1/bookings/place"))
@@ -49,9 +49,9 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
 
         where:
         invalidBookingRequest << [
-                BookingRequestFixture.builder().withAdults(0).build(),
-                BookingRequestFixture.builder().withChildren(-1).build(),
-                BookingRequestFixture.builder().withRoomId("").build(),
+                BookingRequestBuilder.builder().withAdults(0).build(),
+                BookingRequestBuilder.builder().withChildren(-1).build(),
+                BookingRequestBuilder.builder().withRoomId("").build(),
         ]
     }
 }
