@@ -1,8 +1,9 @@
 package it.tarczynski.hotelcalifornia.booking.dto
 
 import java.time.LocalDate
+import java.util.*
+import javax.validation.Valid
 import javax.validation.constraints.Min
-import javax.validation.constraints.Size
 
 data class BookingRequest(
         @field:Min(1)
@@ -15,5 +16,7 @@ data class BookingRequest(
 
         val dateTo: LocalDate,
 
-        @field:Size(min = 3)
-        val roomId: String)
+        val roomId: UUID,
+
+        @field:Valid
+        val guest: BookingRequestGuest)

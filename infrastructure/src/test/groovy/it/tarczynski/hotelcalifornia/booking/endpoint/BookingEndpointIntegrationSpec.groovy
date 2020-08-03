@@ -45,13 +45,34 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
         response.statusCode == HttpStatus.BAD_REQUEST
         with(response.body) {
             message == 'Failed to handle request body'
+            validationErrors*.field.sort() == invalidFields
+            validationErrors*.rejectedValue == rejectedValues
         }
 
         where:
         invalidBookingRequest << [
-                BookingRequestBuilder.builder().withAdults(0).build(),
-                BookingRequestBuilder.builder().withChildren(-1).build(),
-                BookingRequestBuilder.builder().withRoomId("").build(),
+                BookingRequestBuilder.instance().withAdults(0).build(),
+                BookingRequestBuilder.instance().withChildren(-1).build(),
+                BookingRequestBuilder.instance().withGuest(
+                        BookingRequestClientInfoBuilder.instance()
+                                .withCountry('foo')
+                                .build()
+                ).build(),
+                BookingRequestBuilder.instance().withGuest(
+                        BookingRequestClientInfoBuilder.instance()
+                                .withName('')
+                                .withSurname('')
+                                .build()
+                ).build(),
         ]
+
+        invalidFields << [
+                ['adults'],
+                ['children'],
+                ['guest.address.country'],
+                ['guest.name', 'guest.surname']
+        ]
+
+        rejectedValues << [[0], [-1], ['foo'], ['', '']]
     }
 }

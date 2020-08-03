@@ -14,6 +14,7 @@ val spockVersion: String by project
 val mongoDbTestcontainersVersion: String by project
 
 dependencies {
+    implementation(project(":domain"))
     implementation(project(":domain:booking"))
     implementation(project(":repository"))
     implementation(project(":service"))

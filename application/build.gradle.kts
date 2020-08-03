@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(project(":domain:booking"))
     implementation(project(":service"))
     implementation(project(":repository"))
