@@ -3,7 +3,7 @@ package it.tarczynski.hotelcalifornia.core.validation
 import spock.lang.Specification
 import spock.lang.Subject
 
-class CountryCodeValidatorTest extends Specification {
+class CountryCodeValidatorSpec extends Specification {
 
     @Subject
     private CountryCodeValidator countryCodeValidator = new CountryCodeValidator()

@@ -6,7 +6,7 @@ import javax.validation.constraints.Size
 data class BookingRequestAddress(
 
         @field:CountryCode
-        val country: String,
+        val countryCode: String,
 
         @field:Size(min = 1)
         val addressLine: String,

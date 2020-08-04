@@ -2,12 +2,10 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
-    kotlin("kapt")
 }
 
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "groovy")
-apply(plugin = "kotlin-kapt")
 
 val groovyVersion: String by project
 val spockVersion: String by project

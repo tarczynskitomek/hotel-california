@@ -8,5 +8,6 @@ apply(plugin = "io.spring.dependency-management")
 val springBootVersion: String by project
 
 dependencies {
+    implementation(project(":domain"))
     api("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
 }

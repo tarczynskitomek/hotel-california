@@ -2,6 +2,7 @@ package it.tarczynski.hotelcalifornia.booking.endpoint
 
 import static org.springframework.http.MediaType.APPLICATION_JSON
 
+import it.tarczynski.hotelcalifornia.booking.domain.BookingId
 import it.tarczynski.hotelcalifornia.booking.dto.BookingResponse
 import it.tarczynski.hotelcalifornia.booking.repository.BookingRepository
 import it.tarczynski.hotelcalifornia.core.exception.handler.ApiErrorResponse
@@ -29,7 +30,7 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
 
         then:
         response.statusCode == HttpStatus.CREATED
-        bookingRepository.findById(response.body.bookingId).isPresent()
+        bookingRepository.findById(new BookingId(response.body.bookingId)).isPresent()
     }
 
     def "posting invalid booking request should result in BAD_REQUEST"() {
@@ -69,7 +70,7 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
         invalidFields << [
                 ['adults'],
                 ['children'],
-                ['guest.address.country'],
+                ['guest.address.countryCode'],
                 ['guest.name', 'guest.surname']
         ]
 
