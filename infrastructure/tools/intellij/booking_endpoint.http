@@ -4,7 +4,19 @@ Content-Type: application/json
 {
   "adults": "1",
   "children": "0",
-  "dateFrom": "",
-  "dateTo": "",
-  "roomId": "404"
+  "dateFrom": "2020-08-04",
+  "dateTo": "2020-08-06",
+  "roomId": "404",
+  "guest": {
+    "name": "Joe",
+    "surname": "Doe",
+    "email": "joe@doe.com",
+    "phone": "111 222 333",
+    "address" : {
+      "countryCode": "GB",
+      "addressLine": "Baker Street 211 B",
+      "optionalAddressLine": null,
+      "city": "London"
+    }
+  }
 }

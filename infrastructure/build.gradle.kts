@@ -2,6 +2,7 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
+    id("com.avast.gradle.docker-compose") version "0.13.0"
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -36,6 +37,10 @@ dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
+}
+
+dockerCompose {
+    useComposeFiles = mutableListOf("tools/docker-compose/docker-compose.yml")
 }
 
 tasks.withType<Test> {

@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @AggregateRoot
-@Document(collation = "bookings")
+@Document(collection = "bookings")
 data class Booking(@Id val id: BookingId,
                    val adults: Adults,
                    val children: Children,
