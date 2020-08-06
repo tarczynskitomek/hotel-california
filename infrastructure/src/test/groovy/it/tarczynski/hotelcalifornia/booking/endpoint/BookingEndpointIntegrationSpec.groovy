@@ -2,7 +2,7 @@ package it.tarczynski.hotelcalifornia.booking.endpoint
 
 import static org.springframework.http.MediaType.APPLICATION_JSON
 
-import it.tarczynski.hotelcalifornia.booking.domain.BookingId
+import it.tarczynski.hotelcalifornia.booking.BookingId
 import it.tarczynski.hotelcalifornia.booking.dto.BookingResponse
 import it.tarczynski.hotelcalifornia.booking.repository.BookingRepository
 import it.tarczynski.hotelcalifornia.core.exception.handler.ApiErrorResponse

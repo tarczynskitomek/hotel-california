@@ -4,7 +4,7 @@ import java.util.*
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 
-class CountryCodeValidator : ConstraintValidator<CountryCode, String> {
+object CountryCodeValidator : ConstraintValidator<CountryCode, String> {
 
     private val isoCountryCodes = Locale.getISOCountries()
 
