@@ -1,4 +1,4 @@
-package it.tarczynski.hotelcalifornia.booking.domain
+package it.tarczynski.hotelcalifornia.booking
 
 import it.tarczynski.hotelcalifornia.core.annotation.ValueObject
 

@@ -1,7 +1,7 @@
 package it.tarczynski.hotelcalifornia.booking.factory
 
-import it.tarczynski.hotelcalifornia.booking.domain.Booking
-import it.tarczynski.hotelcalifornia.booking.domain.BookingId
+import it.tarczynski.hotelcalifornia.booking.Booking
+import it.tarczynski.hotelcalifornia.booking.BookingId
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequest
 import it.tarczynski.hotelcalifornia.booking.extensions.toBooking
 import org.springframework.stereotype.Component

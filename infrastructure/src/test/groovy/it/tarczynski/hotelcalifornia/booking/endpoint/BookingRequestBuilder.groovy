@@ -6,6 +6,7 @@ import groovy.transform.builder.SimpleStrategy
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequest
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequestAddress
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequestGuest
+import it.tarczynski.hotelcalifornia.booking.dto.BookingRequestStayDates
 import java.time.LocalDate
 import java.time.Month
 
@@ -29,6 +30,6 @@ class BookingRequestBuilder {
     }
 
     BookingRequest build() {
-        new BookingRequest(adults, children, dateFrom, dateTo, roomId, guest)
+        new BookingRequest(adults, children, new BookingRequestStayDates(dateFrom, dateTo), roomId, guest)
     }
 }

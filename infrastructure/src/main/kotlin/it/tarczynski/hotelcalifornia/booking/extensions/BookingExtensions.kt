@@ -1,6 +1,6 @@
 package it.tarczynski.hotelcalifornia.booking.extensions
 
-import it.tarczynski.hotelcalifornia.booking.domain.*
+import it.tarczynski.hotelcalifornia.booking.*
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequest
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequestAddress
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequestGuest
@@ -10,8 +10,7 @@ internal fun BookingRequest.toBooking(bookingId: BookingId): Booking {
             id = bookingId,
             adults = Adults(adults),
             children = Children(children),
-            dateFrom = DateFrom(dateFrom),
-            dateTo = DateTo(dateTo),
+            stayDates = StayDates(DateFrom(stayDates.dateFrom), DateTo(stayDates.dateTo)),
             guest = guest.toGuest(),
             roomId = RoomId(roomId)
     )

@@ -1,6 +1,6 @@
 package it.tarczynski.hotelcalifornia.booking.dto
 
-import java.time.LocalDate
+import it.tarczynski.hotelcalifornia.core.validation.StayDatesRange
 import javax.validation.Valid
 import javax.validation.constraints.Min
 
@@ -11,9 +11,8 @@ data class BookingRequest(
         @field:Min(0)
         val children: Int,
 
-        val dateFrom: LocalDate,
-
-        val dateTo: LocalDate,
+        @field:StayDatesRange
+        val stayDates: BookingRequestStayDates,
 
         val roomId: String,
 
