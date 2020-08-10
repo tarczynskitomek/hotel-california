@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment
 import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
 @CompileStatic
-@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = [HotelCaliforniaApplication, MongoTestConfig])
 class BaseIntegrationSpec extends Specification {
 
@@ -20,5 +21,12 @@ class BaseIntegrationSpec extends Specification {
     @Autowired
     protected ObjectMapper objectMapper
 
+    @LocalServerPort
+    protected int port
+
     protected TestRestTemplate restTemplate = new TestRestTemplate()
+
+    protected String hostWithPort() {
+        "http://localhost:$port"
+    }
 }

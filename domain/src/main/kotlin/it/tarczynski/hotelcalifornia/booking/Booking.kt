@@ -1,6 +1,7 @@
 package it.tarczynski.hotelcalifornia.booking
 
 import it.tarczynski.hotelcalifornia.booking.policy.BookingPolicy
+import it.tarczynski.hotelcalifornia.booking.result.BookingResult
 import it.tarczynski.hotelcalifornia.core.annotation.AggregateRoot
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -19,11 +20,11 @@ data class Booking(
     enum class Status {
         CREATED,
         PLACED,
+        FAILED,
     }
 
-    fun place(bookingPolicy: BookingPolicy): Booking {
-        bookingPolicy.place(this)
-        return copy(status = Status.PLACED)
+    fun place(bookingPolicy: BookingPolicy): BookingResult {
+        return bookingPolicy.place(booking = this)
     }
 
 }

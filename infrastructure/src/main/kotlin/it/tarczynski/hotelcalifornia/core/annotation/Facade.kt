@@ -1,7 +1,6 @@
 package it.tarczynski.hotelcalifornia.core.annotation
 
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
-annotation class Facade {
-}
+@Component
+annotation class Facade
