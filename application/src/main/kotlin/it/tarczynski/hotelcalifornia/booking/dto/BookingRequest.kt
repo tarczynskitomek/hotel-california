@@ -5,6 +5,7 @@ import javax.validation.Valid
 import javax.validation.constraints.Min
 
 data class BookingRequest(
+
         @field:Min(1)
         val adults: Int,
 

@@ -7,13 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @AggregateRoot
 @Document(collection = "bookings")
-data class Booking(@Id val id: BookingId,
-                   val adults: Adults,
-                   val children: Children,
-                   val stayDates: StayDates,
-                   val guest: Guest,
-                   val roomId: RoomId,
-                   val status: Status = Status.CREATED) {
+data class Booking(
+        @Id val id: BookingId,
+        val adults: Adults,
+        val children: Children,
+        val stayDates: StayDates,
+        val guest: Guest,
+        val roomId: RoomId,
+        val status: Status = Status.CREATED) {
 
     enum class Status {
         CREATED,

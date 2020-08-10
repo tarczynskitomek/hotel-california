@@ -5,28 +5,21 @@ import java.time.LocalDate
 data class BookingId(val uuid: String)
 data class Adults(val count: Int) {
     init {
-        if (count <= 0) {
-            throw IllegalArgumentException("At least one adult guest is required")
-        }
+        require(count > 0) { "At least one adult guest is required" }
     }
 }
 
 data class Children(val count: Int) {
     init {
-        if (count < 0) {
-            throw IllegalArgumentException("Children count must be greater than or equal to 0")
-        }
+        require(count >= 0) { "Children count must be greater than or equal to 0" }
     }
 }
 
 data class DateFrom(val date: LocalDate)
 data class DateTo(val date: LocalDate)
-
 data class StayDates(val dateFrom: DateFrom, val dateTo: DateTo) {
     init {
-        if (dateTo.date.isBefore(dateFrom.date) || dateTo.date == dateFrom.date) {
-            throw IllegalArgumentException("Date From cannot be after or equal to Date To")
-        }
+        require(dateTo.date.isAfter(dateFrom.date)) { "Date From cannot be after or equal to Date To" }
     }
 }
 
