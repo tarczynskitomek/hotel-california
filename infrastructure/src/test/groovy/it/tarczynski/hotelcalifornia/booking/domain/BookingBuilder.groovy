@@ -49,7 +49,7 @@ class BookingBuilder {
     String roomId = UUID.randomUUID().toString()
     Booking.Status status = Booking.Status.CREATED
 
-    static BookingBuilder instance() {
+    static BookingBuilder newInstance() {
         new BookingBuilder()
     }
 

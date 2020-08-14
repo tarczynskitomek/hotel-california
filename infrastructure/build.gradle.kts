@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot")
+    id("org.springframework.boot") version "2.3.2.RELEASE"
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
     id("com.avast.gradle.docker-compose") version "0.13.0"

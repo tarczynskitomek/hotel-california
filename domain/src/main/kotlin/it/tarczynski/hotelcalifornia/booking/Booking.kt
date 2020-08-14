@@ -27,4 +27,11 @@ data class Booking(
         return bookingPolicy.place(booking = this)
     }
 
+    override fun equals(other: Any?): Boolean {
+        return other is Booking && other.id == id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode() * 31
+    }
 }
