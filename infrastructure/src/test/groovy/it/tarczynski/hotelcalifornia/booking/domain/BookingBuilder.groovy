@@ -1,11 +1,14 @@
 package it.tarczynski.hotelcalifornia.booking.domain
 
+import static it.tarczynski.hotelcalifornia.booking.Booking.Status.CREATED
+
 import groovy.transform.CompileStatic
 import groovy.transform.builder.Builder
 import groovy.transform.builder.SimpleStrategy
 import it.tarczynski.hotelcalifornia.booking.AddressLine
 import it.tarczynski.hotelcalifornia.booking.Adults
 import it.tarczynski.hotelcalifornia.booking.Booking
+import it.tarczynski.hotelcalifornia.booking.Booking.Status
 import it.tarczynski.hotelcalifornia.booking.BookingId
 import it.tarczynski.hotelcalifornia.booking.Children
 import it.tarczynski.hotelcalifornia.booking.City
@@ -20,7 +23,6 @@ import it.tarczynski.hotelcalifornia.booking.Phone
 import it.tarczynski.hotelcalifornia.booking.RoomId
 import it.tarczynski.hotelcalifornia.booking.StayDates
 import it.tarczynski.hotelcalifornia.booking.Surname
-
 import java.time.LocalDate
 import java.time.Month
 
@@ -30,7 +32,7 @@ import java.time.Month
         builderStrategy = SimpleStrategy)
 class BookingBuilder {
 
-    String id = UUID.randomUUID().toString()
+    UUID id = UUID.randomUUID()
     int adults = 1
     int children = 0
     LocalDate dateFrom = LocalDate.of(2020, Month.JANUARY, 1)
@@ -46,8 +48,8 @@ class BookingBuilder {
     String optionalAddressLine = null
     String city = 'London'
 
-    String roomId = UUID.randomUUID().toString()
-    Booking.Status status = Booking.Status.CREATED
+    UUID roomId = UUID.randomUUID()
+    Status status = CREATED
 
     static BookingBuilder newInstance() {
         new BookingBuilder()

@@ -1,6 +1,7 @@
 package it.tarczynski.hotelcalifornia.booking.endpoint
 
 import it.tarczynski.hotelcalifornia.booking.Booking
+import it.tarczynski.hotelcalifornia.booking.Booking.Status
 import it.tarczynski.hotelcalifornia.booking.RoomId
 import it.tarczynski.hotelcalifornia.booking.dto.BookingRequest
 import it.tarczynski.hotelcalifornia.room.Room
@@ -48,10 +49,10 @@ class BookingEndpointIntegrationSpec extends BaseIntegrationSpec {
 
         then:
         response.statusCode == HttpStatus.CREATED
-        response.body.status == Booking.Status.PLACED
+        response.body.status == Status.PLACED
         with(bookingRepository.findById(new BookingId(response.body.bookingId))) { Optional<Booking> booking ->
             booking.isPresent()
-            booking.get().status == Booking.Status.PLACED
+            booking.get().status == Status.PLACED
         }
     }
 

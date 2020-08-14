@@ -21,7 +21,7 @@ class BookingRequestBuilder {
     int children = 0
     LocalDate dateFrom = LocalDate.of(2020, Month.JANUARY, 1)
     LocalDate dateTo = LocalDate.of(2020, Month.JANUARY, 5)
-    String roomId = UUID.randomUUID().toString()
+    UUID roomId = UUID.randomUUID()
     BookingRequestAddress address = new BookingRequestAddress('GB', 'Baker Street 211B', null, 'London')
     BookingRequestGuest guest = new BookingRequestGuest('Joe', 'Doe', '111 222 333', 'joe@doe.com', address)
 

@@ -11,7 +11,7 @@ class BookingExtensionsSpec extends Specification {
     def 'toBooking should create a booking out of valid booking request'() {
         given:
         BookingRequest bookingRequest = BookingRequestBuilder.instance().build()
-        BookingId bookingId = new BookingId(UUID.randomUUID().toString())
+        BookingId bookingId = new BookingId(UUID.randomUUID())
 
         when:
         Booking booking = BookingExtensionsKt.toBooking(bookingRequest, bookingId)

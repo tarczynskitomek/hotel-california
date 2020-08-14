@@ -5,6 +5,7 @@ import static it.tarczynski.hotelcalifornia.booking.Booking.Status.FAILED
 import static it.tarczynski.hotelcalifornia.booking.Booking.Status.PLACED
 import static it.tarczynski.hotelcalifornia.room.Room.Status.AVAILABLE
 
+import groovy.transform.CompileStatic
 import it.tarczynski.hotelcalifornia.booking.Booking
 import it.tarczynski.hotelcalifornia.booking.policy.BookingPolicy
 import it.tarczynski.hotelcalifornia.booking.policy.RoomAvailabilityBookingPolicy
@@ -21,12 +22,12 @@ class BookingSpec extends Specification {
 
     def 'two bookings with the same id should be equal'() {
         given:
-        String id = UUID.randomUUID().toString()
+        UUID id = UUID.randomUUID()
 
         and:
         Booking first = BookingBuilder.newInstance().withId(id).build()
         Booking second = BookingBuilder.newInstance().withId(id).withChildren(1).build()
-        Booking third = BookingBuilder.newInstance().withId(UUID.randomUUID().toString()).build()
+        Booking third = BookingBuilder.newInstance().withId(UUID.randomUUID()).build()
 
         expect:
         first == first
@@ -38,7 +39,7 @@ class BookingSpec extends Specification {
 
     def 'only id should be used in hashCode'() {
         given:
-        String id = UUID.randomUUID().toString()
+        UUID id = UUID.randomUUID()
 
         and:
         Booking first = BookingBuilder.newInstance().withId(id).build()

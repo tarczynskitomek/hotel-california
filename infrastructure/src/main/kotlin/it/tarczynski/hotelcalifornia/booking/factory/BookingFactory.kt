@@ -11,7 +11,7 @@ import java.util.*
 class BookingFactory {
 
     fun createBookingFrom(bookingRequest: BookingRequest): Booking {
-        val bookingId = BookingId(UUID.randomUUID().toString())
+        val bookingId = BookingId(UUID.randomUUID())
         return bookingRequest.toBooking(bookingId)
     }
 

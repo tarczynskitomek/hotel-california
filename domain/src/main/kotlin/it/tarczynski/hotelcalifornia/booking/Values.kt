@@ -1,8 +1,9 @@
 package it.tarczynski.hotelcalifornia.booking
 
 import java.time.LocalDate
+import java.util.*
 
-data class BookingId(val uuid: String)
+data class BookingId(val uuid: UUID)
 data class Adults(val count: Int) {
     init {
         require(count > 0) { "At least one adult guest is required" }
@@ -23,7 +24,7 @@ data class StayDates(val dateFrom: DateFrom, val dateTo: DateTo) {
     }
 }
 
-data class RoomId(val uuid: String)
+data class RoomId(val uuid: UUID)
 data class Name(val value: String)
 data class Surname(val value: String)
 data class Email(val address: String)
